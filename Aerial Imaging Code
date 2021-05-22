@@ -1,0 +1,94 @@
+    /*
+		Altimeter
+		Measures the height above a reference altitude
+		*/
+		
+		/*
+		Servo rotation
+		Rotates servo to depress camera shutter
+		*/
+		 
+		#include <EYW.h> // this line grants access to the EYW library
+		 
+		
+		EYW::Altimeter myaltimeter;  // this line names the altimeter "myaltimeter"
+		float current_height=0;      // declares a decimal (float) variable named “current_height” and sets it to zero
+		
+		
+		EYW::Camera cameraservo; // this line names the servo "cameraservo"
+		
+		void setup()
+		{
+		
+		  Serial.begin(9600);  
+		  myaltimeter.begin();  // required; initializes the altimeter; no arguments required
+		  current_height = myaltimeter.getHeight();  // sets variable 'current_height' to the pre-calibrated sensor reading
+		  Serial.print("Pre-calibration height reading in meters: ");   
+		    // prints "Pre-calibration height reading in meters: " phrase to the serial monitor
+		  Serial.println(current_height);   // prints current height value to the serial monitor
+		  myaltimeter.calibrate(1000); 
+		    // required; takes 1000 measurements, then calibrates that height to "zero"; argument must be an integer
+		  myaltimeter.alarm(3,880,1000);    // plays 3 notes at 880 Hz for 1 second each.  Each argument must be an integer
+		
+		  
+		  cameraservo.begin(2,4,5);  // initializes the servo.  Arguments are the button, LED, and speaker pin respectively
+		  cameraservo.calibrate(20,60);  // sweeps the servo back and forth from 20 to 90 degrees.  Default pin is 3.
+		                                                   // Make sure arguments are integers between 0 and 180.
+		}
+		
+		void loop ()
+		{
+		   current_height = myaltimeter.getHeightAvg(50);  // takes 50 measurements, sets it equal to "current_height" variable 
+		    // You can get more accurate readings with a higher number but your readings will be slower
+		  Serial.print("Current Height in meters: ");   
+		  Serial.println(current_height);    
+		  if (current_height<-10)   // If the current height is below the starting height, 
+		  {
+		    myaltimeter.alarm(3,800,40);  // sound alarm 3 times at 800 Hz
+		
+		  }
+		  cameraservo.beginTimer(3000); // starts a 3 second timer
+		
+		  if (cameraservo.buttonPressed()==true)
+		  {
+		    cameraservo.beginTimer(10000); // begins a ten second timer
+		  }
+		   if (cameraservo.timerExpired()==true)
+		   {
+		   
+		     cameraservo.alarm(3,200,20); // plays 5 notes at a frequency of 200 Hz for 20 milliseconds each.
+		    
+		    cameraservo.getPicture(1000,1750);  // rotates servo to depress camera shutter. The servo will depress the button
+		   }
+		                                                                // for 1 second at 20 degrees, then go back to 90 degrees, and waits 1.75
+		                                                                // seconds before returning to its original position
+		   cameraservo.alarm(3,200,20); // plays 5 notes at a frequency of 200 Hz for 20 milliseconds each.
+		                                                                // all three arguments must be integers.
+		     cameraservo.beginTimer(10000); // begins a ten second timer
+		  if (cameraservo.timerExpired()==true && cameraservo.buttonPressed()==true)
+		  {
+		    cameraservo.begin(2,4,5);  // initializes the servo.  Arguments are the button, LED, and speaker pin respectively
+		  cameraservo.calibrate(20,90);  // sweeps the servo back and forth from 20 to 90 degrees.  Default pin is 3.
+		                                                  // Make sure arguments are integers between 0 and 180.
+		                                        
+		  }
+		  // checks if the timer is expired or if the button is pressed
+		  // Comparison Operators: = = (equal to)
+		  //                                        != (not equal to) 
+		  //                                        < (less than)
+		  //                                        > (greater than)
+		  //                                        <= (less than or equal to)
+		  //                                        >= (greater than or equal to)
+		  //                                        || (or)
+		  //                                        && (and)
+		  {
+		    cameraservo.getPicture(1000,1750);  // rotates servo to depress camera shutter. The servo will depress the button 
+		                                                                // for 1 second at 20 degrees, then go back to 90 degrees, and waits 1.75
+		                                                                // seconds before returning to its original position
+		
+		   cameraservo.alarm(2,400,30); // plays 5 notes at a frequency of 600 Hz for 100 milliseconds each.
+		                                                                // all three arguments must be integers.
+		                                                                
+		  }
+		}
+	
