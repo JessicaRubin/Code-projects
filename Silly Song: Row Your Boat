@@ -1,0 +1,96 @@
+//Play E4 for quarter note, GENT
+        tone(12,E4);
+        delay(200);
+        noTone(12);
+//Play D4 for eighth note, LY
+        tone(12,D4);
+        delay(200);
+        noTone(12);
+//Play E4 for quarter note, DOWN
+        tone(12,E4);
+        delay(200);
+        noTone(12);
+//Play F4 for eighth note, THE
+       tone(12,F4);
+        delay(200);
+        noTone(12);
+        delay(20);
+//Play G4 for half note, STREAM
+        tone(12,G4);
+        delay(200);
+        noTone(12);
+        delay(20);
+//Play C4 for sixteenth note, MER
+        tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play C4 for sixteenth note, RI
+       tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play C4 for sixteenth note, LY
+        tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play G4 for the sixteenth note, MER
+        tone(12,G4);
+        delay(100);
+        noTone(12);
+//Play G4 for the sixteenth note, RI
+        tone(12,G4);
+        delay(100);
+        noTone(12);
+//Play G4 for the sixteenth note, LY
+        tone(12,G4);
+        delay(100);
+        noTone(12);
+//Play E4 for the sixteenth note, MER
+        tone(12,E4);
+        delay(100);
+        noTone(12);
+//Play E4 for the sixteenth note, RI
+        tone(12,E4);
+        delay(100);
+        noTone(12);
+//Play E4 for the sixteenth note, LY
+        tone(12,E4);
+        delay(100);
+        noTone(12);
+//Play C4 for the sixteenth note, MER
+        tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play C4 for the sixteenth note, RI
+        tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play C4 for the sixteenth note, LY
+        tone(12,C4);
+        delay(100);
+        noTone(12);
+//Play G4 for the quarter note, LIFE
+        tone(12,G4);
+        delay(200);
+        noTone(12);
+			 delay(20);
+//Play F4 for the eighth note, IS
+        tone(12,F4);
+        delay(200);
+        noTone(12);
+        delay(20);
+//Play E4 for the quarter note, BUT
+ 		tone(12,E4);
+        delay(200);
+        noTone(12);
+        delay(20);
+//Play D4 for the eighth note, A
+ tone(12,D4);
+        delay(200);
+        noTone(12);
+        delay(20);
+//Play C4 for a whole note, DREAM
+        tone(12,C4);
+        delay(200);
+        noTone(12);
+        delay(20);
+
